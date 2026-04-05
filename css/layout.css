@@ -63,6 +63,21 @@
   display: none;
 }
 
+/* Clock toggle */
+.clock-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: #666;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.clock-icon:hover {
+  color: #000;
+}
+
 /* Hero */
 .hero {
   text-align: center;

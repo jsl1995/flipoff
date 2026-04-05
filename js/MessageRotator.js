@@ -47,6 +47,14 @@ export class MessageRotator {
     this._resetAutoRotation();
   }
 
+  showClock() {
+    // Jump directly to the world-clock message (last in the list)
+    const clockIndex = this.messages.length - 1;
+    this.currentIndex = clockIndex;
+    this.board.displayMessage(this._resolveMessage(clockIndex));
+    this._resetAutoRotation();
+  }
+
   _resetAutoRotation() {
     // Reset timer when user manually navigates
     if (this._timer) {

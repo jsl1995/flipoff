@@ -42,6 +42,13 @@ export class KeyboardController {
         }
         break;
 
+      case 'c':
+      case 'C':
+        e.preventDefault();
+        this.rotator.showClock();
+        this._showToast('World Clock');
+        break;
+
       case 'Escape':
         if (document.fullscreenElement) {
           document.exitFullscreen();
