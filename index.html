@@ -4,53 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
-  <title>FlipOff. — Split-Flap Display &amp; World Clock for Any TV</title>
+  <title>FlipOff. — World Clock</title>
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/board.css">
   <link rel="stylesheet" href="css/tile.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow: hidden;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    #board-container {
+      width: min(1400px, 100%);
+    }
+  </style>
 </head>
 <body>
+  <main id="board-container"></main>
 
-  <div class="page-frame">
-    <!-- Header -->
-    <header class="header">
-      <div class="header-logo">FlipOff.</div>
-      <nav class="header-nav">
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <button class="clock-icon" id="clock-btn" title="Show world clock">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-        </button>
-        <button class="volume-icon" id="volume-btn" title="Toggle sound">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          </svg>
-        </button>
-      </nav>
-    </header>
+  <script type="module">
+    import { Board } from './js/Board.js';
+    import { getTimeMessage } from './js/TimeMessage.js';
+    import { MESSAGE_INTERVAL, TOTAL_TRANSITION } from './js/constants.js';
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1>Turn any TV into a retro split-flap display.</h1>
-      <p class="subtitle">World clock, quotes &amp; custom messages — the classic flip-board look, without the $3,500 hardware.</p>
-      <div class="hero-cta">
-        <input type="email" placeholder="you@example.com">
-        <button id="cta-btn">Get Early Access</button>
-      </div>
-    </section>
+    const boardContainer = document.getElementById('board-container');
+    const board = new Board(boardContainer, null);
 
-    <!-- Board -->
-    <section class="board-section" id="board-container">
-    </section>
-  </div>
-
-  <script type="module" src="js/main.js"></script>
+    const renderClock = () => board.displayMessage(getTimeMessage());
+    renderClock();
+    setInterval(renderClock, MESSAGE_INTERVAL + TOTAL_TRANSITION);
+  </script>
 </body>
 </html>
