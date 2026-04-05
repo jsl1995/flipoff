@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
-  <title>FlipOff. — Free Split-Flap Display for Any TV</title>
+  <title>FlipOff. — Split-Flap Display &amp; World Clock for Any TV</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/board.css">
@@ -20,6 +20,12 @@
       <nav class="header-nav">
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
+        <button class="clock-icon" id="clock-btn" title="Show world clock">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </button>
         <button class="volume-icon" id="volume-btn" title="Toggle sound">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -33,7 +39,7 @@
     <!-- Hero -->
     <section class="hero">
       <h1>Turn any TV into a retro split-flap display.</h1>
-      <p class="subtitle">The classic flip-board look, without the $3,500 hardware.</p>
+      <p class="subtitle">World clock, quotes &amp; custom messages — the classic flip-board look, without the $3,500 hardware.</p>
       <div class="hero-cta">
         <input type="email" placeholder="you@example.com">
         <button id="cta-btn">Get Early Access</button>

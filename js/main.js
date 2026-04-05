@@ -36,6 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // World clock toggle button in header
+  const clockBtn = document.getElementById('clock-btn');
+  if (clockBtn) {
+    clockBtn.addEventListener('click', () => {
+      initAudio();
+      rotator.showClock();
+      boardContainer.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
   // "Get Early Access" button: scroll to board and go fullscreen
   const ctaBtn = document.getElementById('cta-btn');
   if (ctaBtn) {

@@ -66,6 +66,7 @@ export class Board {
     overlay.innerHTML = `
       <div><span>Next message</span><kbd>Enter</kbd></div>
       <div><span>Previous</span><kbd>\u2190</kbd></div>
+      <div><span>World Clock</span><kbd>C</kbd></div>
       <div><span>Fullscreen</span><kbd>F</kbd></div>
       <div><span>Mute</span><kbd>M</kbd></div>
     `;
