@@ -1,12 +1,19 @@
 import { MESSAGES, MESSAGE_INTERVAL, TOTAL_TRANSITION } from './constants.js';
+import { getTimeMessage } from './TimeMessage.js';
 
 export class MessageRotator {
   constructor(board) {
     this.board = board;
-    this.messages = MESSAGES;
+    // Mix static messages with the dynamic world-clock generator
+    this.messages = [...MESSAGES, getTimeMessage];
     this.currentIndex = -1;
     this._timer = null;
     this._paused = false;
+  }
+
+  _resolveMessage(index) {
+    const msg = this.messages[index];
+    return typeof msg === 'function' ? msg() : msg;
   }
 
   start() {
@@ -30,13 +37,13 @@ export class MessageRotator {
 
   next() {
     this.currentIndex = (this.currentIndex + 1) % this.messages.length;
-    this.board.displayMessage(this.messages[this.currentIndex]);
+    this.board.displayMessage(this._resolveMessage(this.currentIndex));
     this._resetAutoRotation();
   }
 
   prev() {
     this.currentIndex = (this.currentIndex - 1 + this.messages.length) % this.messages.length;
-    this.board.displayMessage(this.messages[this.currentIndex]);
+    this.board.displayMessage(this._resolveMessage(this.currentIndex));
     this._resetAutoRotation();
   }
 
