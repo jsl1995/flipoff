@@ -24,6 +24,21 @@
     #board-container {
       width: min(1400px, 100%);
     }
+
+    :fullscreen body {
+      padding: 0;
+    }
+
+    :fullscreen #board-container {
+      width: 100%;
+    }
+
+    :fullscreen .board {
+      border-radius: 0;
+      /* Scale tile size so the 22-column grid fits within the viewport.
+         200px accounts for board horizontal padding (96px) + 21 gaps (~5px each). */
+      --tile-size: clamp(20px, calc((100vw - 200px) / 22), 70px);
+    }
   </style>
 </head>
 <body>
