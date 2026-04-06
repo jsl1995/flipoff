@@ -150,5 +150,5 @@
 :fullscreen .board {
   border-radius: 0;
   box-shadow: none;
-  --tile-size: clamp(44px, 4vw, 70px);
+  --tile-size: clamp(36px, calc((100vw - 201px) / 22), 70px);
 }
